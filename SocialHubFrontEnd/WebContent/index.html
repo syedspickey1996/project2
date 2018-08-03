@@ -1,0 +1,317 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="RouteConfig.js"></script>
+<script src="c_user/UserController.js"></script>
+<script src="c_blog/BlogController.js"></script>
+<script src="c_forum/ForumController.js"></script>
+<script src="c_friend/FriendController.js"></script>
+<script src="c_chat/ChatController.js"></script>
+<script src="c_chat/ChatService.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+
+</head>
+<body ng-app="MyModule">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SocialHub</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li ng-show="currentUser==undefined"><a href="#/login">Login</a></li>
+      <li ng-show="currentUser==undefined"><a href="#/register">Register</a></li>
+      <li ng-hide="currentUser==undefined"><a href="#/profilePic">Profile Update</a>
+      <li><a href="#/contactus">Contact Us</a></li>
+      <li><a href="#/aboutus">About Us</a></li>
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="#/addBlog">Add Blog</a></li>
+      <li><a href="#/showBlog">Show Blog</a></li>
+      <li><a href="#/adminBlog">Manage Blog</a></li>
+    </ul>
+    </li>
+     <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forum<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="#/addForum">Add Forum</a></li>
+      <li><a href="#/showForum">Show Forum</a></li>
+      <li><a href="#/adminForum">Manage Forum</a></li>
+    </ul>
+    </li>
+    <li ng-hide="currentUser==undefined" class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friend<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="#/showFriendList">Show Friend List</a></li>
+      <li><a href="#/showPendingFriendRequestList">Show Pending Friend Requests</a></li>
+      <li><a href="#/showSuggestedFriendList">Suggested Friend List</a></li>
+    </ul>
+    </li>
+    <li><a ng-hide="currentUser==undefined" href="#/chat">Chat</a></li>
+    <li ng-hide="currentUser==undefined"><a href="#/logout">Logout</a></li>
+    </ul>
+    <div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+    <img src="http://localhost:8081/SocialHubMiddleware/getImage/{{currentUser.loginname}}" style="width:80px;height:50px;padding:0;margin:0;" alt="user profile picture">
+    <font color="white" face="calibri" size="2">Welcome {{currentUser.username}} </font>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div ng-view></div>
+</div>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="RouteConfig.js"></script>
+<script src="c_user/UserController.js"></script>
+<script src="c_blog/BlogController.js"></script>
+<script src="c_forum/ForumController.js"></script>
+<script src="c_friend/FriendController.js"></script>
+<script src="c_chat/ChatController.js"></script>
+<script src="c_chat/ChatService.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+<script>
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p").hide();
+    });
+    $("#show").click(function(){
+        $("p").show();
+    });
+});
+$(document).ready(function(){
+    $("#hide").click(function(){
+        $("p1").hide();
+    });
+    $("#show").click(function(){
+        $("p1").show();
+    });
+});
+    
+</script>
+</head>
+<body ng-app="MyModule">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SocialHub</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <!-- <li ng-show="currentUser==undefined"><a href="#/login">Login</a></li> -->
+      
+      <li ng-show="currentUser==undefined||currentUser.role=='ROLE_ADMIN'"><a href="#/login">Login</a></li>
+      
+      <li ng-show="currentUser==undefined"><a href="#/register">Register</a></li>
+      
+       <li ng-hide="currentUser==undefined||currentUser.role=='ROLE_ADMIN'"><a href="#/profilePic">Profile Update</a>
+     
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      
+      <li ng-hide="currentUser.role=='ROLE_ADMIN'"><a href="#/addBlog">Add Blog</a></li>
+      <li ng-hide="currentUser.role=='ROLE_ADMIN'"><a href="#/showBlog">Show Blog</a></li>
+      <li ng-show="currentUser.role=='ROLE_ADMIN'"><a href="#/adminBlog">Manage Blog</a></li>
+   
+    </ul>
+    </li>
+     <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forum<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      
+      <li ng-hide="currentUser.role=='ROLE_ADMIN'"><a href="#/addForum">Add Forum</a></li>
+      <li ng-hide="currentUser.role=='ROLE_ADMIN'"><a href="#/showForum">Show Forum</a></li>
+      <li ng-show="currentUser.role=='ROLE_ADMIN'"><a href="#/adminForum">Manage Forum</a></li>
+      
+    </ul>
+    </li>
+    <li ng-hide="currentUser==undefined" class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Friend<span class="Caret"></span></a>
+      <ul class="dropdown-menu">
+      <li><a href="#/showFriendList">Show Friend List</a></li>
+      <li><a href="#/showPendingFriendRequestList">Show Pending Friend Requests</a></li>
+      <li><a href="#/showSuggestedFriendList">Suggested Friend List</a></li>
+    </ul>
+    </li>
+    <li ng-hide="currentUser.role=='ROLE_ADMIN'||currentUser==undefined"><a href="#/chat">Chat</a></li>
+      <p><a ng-hide="currentUser==undefined" href="#/login"><button id="hide">Logout</button></a></p>
+    </ul>
+    <div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+    <p1><img src="http://localhost:8081/SocialHubMiddleware/getImage/{{currentUser.loginname}}" style="width:80px;height:50px;padding:0;margin:0;" alt="user profile picture">
+    <font color="white" face="calibri" size="2">Welcome {{currentUser.username}} </font></p1>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+<div ng-view></div>
+</div>
+
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+/* Full height image header */
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("images/p2.PNG");
+    min-height: 100%;
+}
+.w3-bar .w3-button {
+    padding: 16px;
+}
+</style>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="#home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Start something that matters</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="#about">
+  <h3 class="w3-center">ABOUT THE COMPANY</h3>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section "Statistics" -->
+<div class="w3-container w3-row w3-center w3-dark-grey w3-padding-64">
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">14+</span>
+    <br>Partners
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">55+</span>
+    <br>Projects Done
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">89+</span>
+    <br>Happy Clients
+  </div>
+  <div class="w3-quarter">
+    <span class="w3-xxlarge">150+</span>
+    <br>Meetings
+  </div>
+</div>
+
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="#contact">
+  <h3 class="w3-center">CONTACT</h3>
+  <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+  <div class="w3-row-padding" style="margin-top:64px">
+    <div class="w3-half">
+      <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> INDIA , CHENNAI </p>
+      <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> Phone: +91 151515</p>
+      <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i> Email: mail@mail.com</p>
+      <br>
+      <form action="/action_page.php" target="_blank">
+        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Subject" required name="Subject"></p>
+        <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+        <p>
+          <button class="w3-button w3-black" type="submit">
+            <i class="fa fa-paper-plane"></i> SEND MESSAGE
+          </button>
+        </p>
+      </form>
+    </div>
+    <div class="w3-half">
+      <!-- Add Google Maps -->
+      <div id="googleMap" class="w3-greyscale-max" style="width:100%;height:510px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <div class="w3-xlarge w3-section">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</footer>
+ 
+
+
+</body>
+</html>
+
